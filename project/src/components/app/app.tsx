@@ -1,5 +1,8 @@
+import MainPage from '../MainPage/MainPage';
+
 function App(): JSX.Element {
-  return <p>Hello, world!</p>;
+  return <MainPage count={351}/>;
 }
 
 export default App;
+
