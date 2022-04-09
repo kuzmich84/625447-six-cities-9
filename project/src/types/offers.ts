@@ -35,7 +35,8 @@ export interface ICardProps {
 
 export interface IOffer {
   offer: ICardProps,
-  cardHandler: (id: number) => void
+  typeCard?: string,
+  cardHandler?: (id: number) => void
 }
 
 export interface IOffers {

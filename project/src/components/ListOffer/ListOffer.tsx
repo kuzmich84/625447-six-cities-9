@@ -11,7 +11,7 @@ function ListOffer({offers}: IOffers) {
 
   return (
     <div className="cities__places-list places__list tabs__content">
-      {offers.map((offer) => <Card cardHandler={cardHandler} key={offer.id} offer={offer}/>)}
+      {offers.map((offer) => <Card cardHandler={cardHandler} key={offer.id} offer={offer} />)}
     </div>
   );
 }
