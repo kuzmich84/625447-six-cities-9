@@ -1,4 +1,4 @@
-export const offersMocks = [
+export const offers = [
   {
     city: {
       name: 'Cologne',
