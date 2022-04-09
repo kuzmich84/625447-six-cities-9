@@ -13,7 +13,7 @@ function App(): JSX.Element {
       <Routes>
         <Route path={AppRoute.Root} element={<MainPage count={351}/>}/>
         <Route path={AppRoute.Login} element={<LoginPage/>}/>
-        <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><FavoritesPage/></PrivateRoute> }/>
+        <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}><FavoritesPage/></PrivateRoute> }/>
         <Route path={`${AppRoute.Offer}/:id`} element={<RoomPage/>}/>
         <Route path={AppRoute.All} element={<NotFound/>}/>
       </Routes>
