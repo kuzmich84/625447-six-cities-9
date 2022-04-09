@@ -1,3 +1,5 @@
+import {ICardProps} from '../types/offers';
+
 export const transferRatingToPercent = (rating: number) => Math.round(rating) * 100 / 5;
 
 
@@ -15,9 +17,9 @@ export const toCapitalize = (string: string) => string[0].toUpperCase() + string
 
 export const extend = (a: object, b: object) => Object.assign({}, a, b);
 
-// export const getOffersUtils = (offers:[], city:string) => {
-//   return offers.filter((items) => items.city.name === toCapitalize(city));
-// };
+export const getOffersUtils = (offers: ICardProps[], city: string) => offers.filter((item) => item.city.name === toCapitalize(city));
+
+export const getCities = (offers: ICardProps[]) => [...new Set(offers.map((offer) => offer.city.name))].sort();
 
 export const toCamelCase = (s: string) => s.replace(/([-_][a-z])/ig, (symbol) => (
   symbol.toUpperCase()
