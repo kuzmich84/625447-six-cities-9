@@ -3,8 +3,8 @@ export const offers = [
     city: {
       name: 'Cologne',
       location: {
-        latitude: 50.938361,
-        longitude: 6.959974,
+        latitude: 52.3909553943508,
+        longitude: 4.85309666406198,
         zoom: 13,
       },
     },
@@ -42,11 +42,28 @@ export const offers = [
       avatarUrl: 'img/avatar-angelina.jpg',
     },
     description: 'Discover daily local life in city center, friendly neighborhood, clandestine casino, karaoke, old-style artisans, art gallery and artist studio downstairs.',
-    location: {
-      latitude: 50.957361,
-      longitude: 6.9509739999999995,
-      zoom: 16,
-    },
+    location: [
+      {
+        latitude: 52.3909553943508,
+        longitude: 4.85309666406198,
+        zoom: 16,
+      },
+      {
+        latitude: 52.369553943508,
+        longitude: 64.85309666406198,
+        zoom: 16,
+      },
+      {
+        latitude: 52.3909553943508,
+        longitude: 4.929309666406198,
+        zoom: 16,
+      },
+      {
+        latitude: 52.3809553943508,
+        longitude: 4.939309666406198,
+        zoom: 16,
+      },
+    ],
     id: 1,
   },
   {
@@ -102,11 +119,11 @@ export const offers = [
       avatarUrl: 'img/avatar-angelina.jpg',
     },
     description: 'This is a place for dreamers to reset, reflect, and create. Designed with a slow pace in mind, our hope is that you enjoy every part of your stay; from making local coffee by drip in the morning, choosing the perfect record to put on as the sun sets.',
-    location: {
+    location: [{
       latitude: 50.839557,
       longitude: 4.346697,
       zoom: 16,
-    },
+    }],
     id: 2,
   },
   {
@@ -157,11 +174,11 @@ export const offers = [
       avatarUrl: 'img/avatar-angelina.jpg',
     },
     description: 'Relax, rejuvenate and unplug in this ultimate rustic getaway experience in the country. In our beautiful screened Pondhouse, you can gaze at the stars and listen to the sounds of nature from your cozy warm bed.',
-    location: {
+    location: [{
       latitude: 50.865556999999995,
       longitude: 4.371696999999999,
       zoom: 16,
-    },
+    }],
     id: 3,
   },
 ];

@@ -1,13 +1,15 @@
 import React from 'react';
 
+export interface ILocation{
+  latitude: number,
+  longitude: number,
+  zoom: number,
+}
+
 export interface ICardProps {
   city: {
     name: string,
-    location: {
-      latitude: number,
-      longitude: number,
-      zoom: number,
-    },
+    location: ILocation,
   },
   previewImage: string,
   images: string[],
@@ -27,11 +29,7 @@ export interface ICardProps {
     avatarUrl: string,
   },
   description: string,
-  location: {
-    latitude: number,
-    longitude: number,
-    zoom: number,
-  },
+  location: ILocation[],
   id: number,
 }
 
