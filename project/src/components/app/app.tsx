@@ -15,7 +15,7 @@ function App({offers}:IOffers): JSX.Element {
         <Route path={AppRoute.Root} element={<MainPage offers={offers}  count={351}/>}/>
         <Route path={AppRoute.Login} element={<LoginPage/>}/>
         <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><FavoritesPage offers={offers}/></PrivateRoute> }/>
-        <Route path={`${AppRoute.Offer}/:id`} element={<RoomPage/>}/>
+        <Route path={`${AppRoute.Offer}/:id`} element={<RoomPage offers={offers}/>}/>
         <Route path={AppRoute.All} element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>

@@ -77,7 +77,7 @@ export const offers = [
     ],
     title: 'Amazing and Extremely Central Flat',
     isFavorite: false,
-    isPremium: false,
+    isPremium: true,
     rating: 4.3,
     type: 'apartment',
     bedrooms: 3,

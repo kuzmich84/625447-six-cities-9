@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {IOffers} from '../../types/offers';
 import {getCities, getOffersUtils} from '../../utils/utils';
 import Card from '../Card/Card';
 
 function ListFavorite({offers}: IOffers) {
+  const [, setId] = useState<number>();
 
+  function cardHandler(id:number) {
+    setId(id);
+  }
   return (
     <ul className="favorites__list">
       {getCities(offers).map((city) => (
@@ -18,7 +22,7 @@ function ListFavorite({offers}: IOffers) {
           </div>
           <div className="favorites__places">
             {getOffersUtils(offers, city).map((offer)=>(
-              <Card key={offer.id} offer={offer}  typeCard='favorites'/>
+              <Card cardHandler={cardHandler} key={offer.id} offer={offer}  typeCard='favorites'/>
             ))}
 
           </div>

@@ -45,6 +45,10 @@ export const getOfferFavoriteStatus = (isFavorite: boolean) => {
   }
 };
 
+export function getOffer(array: ICardProps[], idx='0'):ICardProps {
+  return array.filter((item) => item.id === parseInt(idx, 10))[0];
+}
+
 // export const newList = (oldList:[], newObject:{id: number}) => {
 //   return oldList.map((object) => {
 //     if (object.id === newObject.id) {

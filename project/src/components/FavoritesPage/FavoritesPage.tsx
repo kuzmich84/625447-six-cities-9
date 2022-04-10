@@ -4,7 +4,7 @@ import {IOffers} from '../../types/offers';
 
 function FavoritesPage({offers}: IOffers): JSX.Element {
   return (
-    <>
+    <div className="page">
       <Header/>
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
@@ -14,7 +14,7 @@ function FavoritesPage({offers}: IOffers): JSX.Element {
           </section>
         </div>
       </main>
-    </>
+    </div>
   );
 }
 

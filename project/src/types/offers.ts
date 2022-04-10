@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface ICardProps {
   city: {
     name: string,
@@ -33,10 +35,19 @@ export interface ICardProps {
   id: number,
 }
 
+export interface Item {
+  id: string
+}
+
+export interface IStar {
+  id: number,
+  onChangeStar(event: React.ChangeEvent<HTMLInputElement>): void
+}
+
 export interface IOffer {
   offer: ICardProps,
   typeCard?: string,
-  cardHandler?: (id: number) => void
+  cardHandler(id: number):void
 }
 
 export interface IOffers {
