@@ -1,6 +1,7 @@
 import Header from '../Layout/Header';
 import {ICardProps} from '../../types/offers';
 import ListOffer from '../ListOffer/ListOffer';
+import Map from '../Map/Map';
 
 interface IMainPageProps {
   count: number,
@@ -72,7 +73,9 @@ function MainPage({offers, count}: IMainPageProps): JSX.Element {
               <ListOffer offers={offers}/>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+                <Map city={offers[0].city.location} points={offers[0].location}/>
+              </section>
             </div>
           </div>
         </div>
