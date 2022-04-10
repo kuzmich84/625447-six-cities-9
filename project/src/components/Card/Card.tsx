@@ -1,14 +1,14 @@
 import {IOffer} from '../../types/offers';
 import {toCapitalize, transferRatingToPercent} from '../../utils/utils';
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function Card({offer, cardHandler, typeCard = 'cities'}: IOffer): JSX.Element {
-  const {previewImage, price, type, title, rating} = offer;
+  const {previewImage, price, type, title, rating, isPremium} = offer;
   return (
-    <article className={`${typeCard === 'cities' ? `${typeCard}__place-card` : `${typeCard}__card`} place-card`} onMouseOver={() => cardHandler}>
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
+    <article className={`${typeCard === 'cities' ? `${typeCard}__place-card` : `${typeCard}__card`} place-card`} onMouseOver={() => cardHandler(offer.id)}>
+
+      {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
       <div className={`${typeCard}__image-wrapper place-card__image-wrapper`}>
         <a href="/">
           <img className="place-card__image" src={previewImage} width="260" height="200" alt="opopop"/>
@@ -34,7 +34,7 @@ function Card({offer, cardHandler, typeCard = 'cities'}: IOffer): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="/">{title}</a>
+          <Link to={`/offer/${offer.id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{toCapitalize(type)}</p>
       </div>
