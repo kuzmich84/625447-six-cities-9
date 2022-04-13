@@ -8,3 +8,7 @@ export const fetchOffersByCity = (city: string) => (
     dispatch({type: ActionType.FETCH_OFFERS, payload: getOffersUtils(offers, city)});
   }
 );
+
+export const changeCity = (city: string) => (dispatch: Dispatch<Actions>) => {
+  dispatch({type: ActionType.CHOOSE_CITY, payload: city});
+};
