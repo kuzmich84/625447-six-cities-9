@@ -1,14 +1,27 @@
 import Header from '../Layout/Header';
-import {ICardProps} from '../../types/offers';
 import ListOffer from '../ListOffer/ListOffer';
 import Map from '../Map/Map';
+import {useDispatch, useSelector} from 'react-redux';
+import {IOffersState} from '../../types/state';
+import {useEffect} from 'react';
+import {fetchOffersByCity} from '../../store/action-creators';
 
-interface IMainPageProps {
-  count: number,
-  offers: ICardProps[]
-}
+function MainPage(): JSX.Element {
+  const city = useSelector((state: IOffersState) => state.city);
+  const offers = useSelector((state: IOffersState) => state.offers);
+  const dispatch = useDispatch();
 
-function MainPage({offers, count}: IMainPageProps): JSX.Element {
+  useEffect(() => {
+    dispatch(fetchOffersByCity(city));
+
+  }, []);
+
+
+  if (offers.length === 0) {
+    return <p>Loading...</p>;
+  }
+
+
   return (
     <div className="page page--gray page--main">
       <Header/>
@@ -33,7 +46,7 @@ function MainPage({offers, count}: IMainPageProps): JSX.Element {
                 </a>
               </li>
               <li className="locations__item">
-                <a  className="locations__item-link tabs__item tabs__item--active" href="/">
+                <a className="locations__item-link tabs__item tabs__item--active" href="/">
                   <span>Amsterdam</span>
                 </a>
               </li>
@@ -54,7 +67,7 @@ function MainPage({offers, count}: IMainPageProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{count} places to stay in Amsterdam</b>
+              <b className="places__found">{offers.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>

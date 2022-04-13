@@ -51,3 +51,4 @@ export interface IOffer {
 export interface IOffers {
   offers: ICardProps[]
 }
+
