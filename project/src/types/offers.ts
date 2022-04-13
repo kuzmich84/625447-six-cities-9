@@ -51,3 +51,8 @@ export interface IOffer {
 export interface IOffers {
   offers: ICardProps[]
 }
+
+export interface IListCityProps {
+  cities: string[],
+  currentCity: string,
+}

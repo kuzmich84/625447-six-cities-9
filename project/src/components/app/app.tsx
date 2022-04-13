@@ -12,7 +12,7 @@ function App({offers}:IOffers): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Root} element={<MainPage offers={offers}  count={351}/>}/>
+        <Route path={AppRoute.Root} element={<MainPage />}/>
         <Route path={AppRoute.Login} element={<LoginPage/>}/>
         <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><FavoritesPage offers={offers}/></PrivateRoute> }/>
         <Route path={`${AppRoute.Offer}/:id`} element={<RoomPage offers={offers}/>}/>
