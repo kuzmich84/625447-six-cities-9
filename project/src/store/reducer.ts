@@ -1,4 +1,3 @@
-
 import {Actions, ActionType} from '../types/action';
 import {IOffersState} from '../types/state';
 
