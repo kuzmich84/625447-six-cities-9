@@ -1,24 +1,20 @@
 import Header from '../Layout/Header';
 import ListOffer from '../ListOffer/ListOffer';
 import Map from '../Map/Map';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {IOffersState} from '../../types/state';
-import {useEffect} from 'react';
-import {fetchOffersByCity} from '../../store/action-creators';
 import ListCity from '../ListCity/ListCity';
 import {Cities} from '../../mocks/constants';
-import MainPageEmpty from './MainPageEmpty';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import {IOffers} from '../../types/offers';
 
-function MainPage(): JSX.Element {
+function MainPage({offers}:IOffers): JSX.Element {
+
   const city = useSelector((state: IOffersState) => state.city);
-  const offers = useSelector((state: IOffersState) => state.offers);
-  const dispatch = useDispatch();
+  const isDataLoaded = useSelector((state: IOffersState) => state.isDataLoaded);
 
-  useEffect(() => {
-    dispatch(fetchOffersByCity(city));
 
-  }, [city]);
-
+  const markers = offers.map((offer)=>offer.location);
 
   return (
     <div className="page page--gray page--main">
@@ -31,14 +27,14 @@ function MainPage(): JSX.Element {
           </section>
         </div>
         {
-          offers.length === 0
-            ? <MainPageEmpty/>
+          isDataLoaded
+            ? <LoadingSpinner/>
             :
             <div className="cities">
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
-                  <b className="places__found">{offers.length} places to stay in Amsterdam</b>
+                  <b className="places__found">{offers.length} places to stay in {city}</b>
                   <form className="places__sorting" action="#" method="get">
                     <span className="places__sorting-caption">Sort by</span>
                     <span className="places__sorting-type" tabIndex={0}>
@@ -58,12 +54,11 @@ function MainPage(): JSX.Element {
                 </section>
                 <div className="cities__right-section">
                   <section className="cities__map map">
-                    <Map city={offers[0].city.location} points={offers[0].location}/>
+                    <Map city={offers[0].city.location} points={markers}/>
                   </section>
                 </div>
               </div>
             </div>
-
         }
       </main>
     </div>

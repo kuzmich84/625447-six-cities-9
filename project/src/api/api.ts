@@ -1,6 +1,7 @@
-import axios, {AxiosError, AxiosInstance, AxiosResponse} from 'axios';
+import axios, {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
+import {getToken} from './token';
 
-const BACKEND_URL = 'https://9.react.pages.academy/six-cities/hotels';
+const BACKEND_URL = 'https://9.react.pages.academy/six-cities/';
 const REQUEST_TIMEOUT = 5000;
 
 enum HttpCode {
@@ -24,17 +25,22 @@ export const createAPI = (onUnauthorized: UnauthorizedCallback): AxiosInstance =
       if (response?.status === HttpCode.Unauthorized) {
         return onUnauthorized;
       }
-
       return Promise.reject(error);
+    },
+  );
 
-    }
+  api.interceptors.request.use(
+    (config: AxiosRequestConfig) => {
+      const token = getToken();
+
+      if (token && config.headers) {
+        config.headers['x-token'] = token;
+      }
+
+      return config;
+    },
   );
 
   return api;
 
 };
-
-
-
-
-

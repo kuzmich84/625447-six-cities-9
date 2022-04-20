@@ -6,15 +6,18 @@ import FavoritesPage from '../FavoritesPage/FavoritesPage';
 import RoomPage from '../RoomPage/RoomPage';
 import PrivateRoute from '../Layout/PrivateRoute';
 import {AppRoute, AuthorizationStatus} from '../../types/const';
-import {IOffers} from '../../types/offers';
+import {useSelector} from 'react-redux';
+import {IOffersState} from '../../types/state';
 
-function App({offers}:IOffers): JSX.Element {
+function App(): JSX.Element {
+  const offers = useSelector((state: IOffersState) => state.offers);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Root} element={<MainPage />}/>
+        <Route path={AppRoute.Root} element={<MainPage offers={offers}/>}/>
         <Route path={AppRoute.Login} element={<LoginPage/>}/>
-        <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><FavoritesPage offers={offers}/></PrivateRoute> }/>
+        <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><FavoritesPage offers={offers}/></PrivateRoute>}/>
         <Route path={`${AppRoute.Offer}/:id`} element={<RoomPage offers={offers}/>}/>
         <Route path={AppRoute.All} element={<NotFound/>}/>
       </Routes>
