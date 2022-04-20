@@ -2,7 +2,7 @@ import React from 'react';
 import {IListCityProps} from '../../types/offers';
 import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
-import {changeCity} from '../../store/action-creators';
+import {changeCity, fetchOffersByCity} from '../../store/action-creators';
 
 function ListCity({cities, currentCity}: IListCityProps): JSX.Element {
 
@@ -10,6 +10,7 @@ function ListCity({cities, currentCity}: IListCityProps): JSX.Element {
   const clickCityHandler = (event: React.MouseEvent<HTMLAnchorElement>, city: string) => {
     event.preventDefault();
     dispatch(changeCity(city));
+    dispatch(fetchOffersByCity(city));
   };
 
   return (

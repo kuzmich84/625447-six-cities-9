@@ -29,7 +29,7 @@ export interface ICardProps {
     avatarUrl: string,
   },
   description: string,
-  location: ILocation[],
+  location: ILocation,
   id: number,
 }
 
