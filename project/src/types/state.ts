@@ -4,6 +4,6 @@ import {AuthorizationStatus} from './const';
 export interface IOffersState {
   city: string,
   offers: ICardProps[],
-  authorizationStatus: AuthorizationStatus,
+  authorizationStatus: string,
   isDataLoaded: boolean,
 }

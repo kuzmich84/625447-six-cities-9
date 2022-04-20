@@ -16,7 +16,7 @@ export const offerReducer = (state: IOffersState = initialState, action: Actions
     case ActionType.FETCH_OFFERS:
       return {...state, offers: action.payload};
     case ActionType.REQUIRE_AUTHORIZATION:
-      return <IOffersState>{...state, authorizationStatus: action.payload};
+      return {...state, authorizationStatus: action.payload};
     case ActionType.IS_LOAD_DATA:
       return {...state, isDataLoaded: action.payload};
     default:
