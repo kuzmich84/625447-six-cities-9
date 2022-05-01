@@ -1,17 +1,19 @@
-import React  from 'react';
+import React from 'react';
 import {Navigate} from 'react-router-dom';
 import {AuthorizationStatus} from '../../types/const';
+import {useSelector} from 'react-redux';
+import {IOffersState} from '../../types/state';
 
 
 type PrivateRouteProps = {
   children: JSX.Element;
-  authorizationStatus: string;
 }
 
 function PrivateRoute(props: PrivateRouteProps): JSX.Element {
-  const {authorizationStatus, children} = props;
+  const authorizationStatus = useSelector((state: IOffersState) => state.authorizationStatus);
+  const {children} = props;
 
-  if (authorizationStatus===AuthorizationStatus.NoAuth) {
+  if (authorizationStatus === AuthorizationStatus.NoAuth || AuthorizationStatus.Unknown) {
     return <Navigate to="/login" replace/>;
   }
   return children;
