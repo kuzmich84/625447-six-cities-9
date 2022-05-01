@@ -23,7 +23,7 @@ export const changeCity = (city: string) => (
 );
 
 export const checkAuthAction = (): ThunkActionResult => (
-  async (dispatch, _getState, api): Promise<void> => {
+  async (dispatch, _getState, api) => {
     await api.get(APIRoute.Login)
       .then(() => {
         dispatch(requireAuthorization(AuthorizationStatus.Auth));
